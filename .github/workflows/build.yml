@@ -1,1 +1,8 @@
+on: push
 
+jobs:
+    back:
+        runs-on: ubuntu-latest
+        steps:
+        - run: |
+              sudo modprobe ashmem_linux
