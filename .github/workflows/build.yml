@@ -9,7 +9,7 @@ jobs:
               sudo apt install -y --no-install-recommends sway waydroid linux-modules-extra-$(uname -r)
               WLR_BACKENDS=headless sway &
               sudo waydroid init
-              sudo waydroid container start
+              sudo systemctl restart waydroid-container
               WAYLAND_DISPLAY=wayland-1 waydroid session start
         - uses: actions/upload-artifact@main
           with:
