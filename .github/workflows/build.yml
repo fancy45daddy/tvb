@@ -5,6 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - run: |
+              ls /dev/dri
               sudo apt update
               sudo apt install -y --no-install-recommends sway xwayland
               WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 sway &
