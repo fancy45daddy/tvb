@@ -6,19 +6,23 @@ jobs:
         steps:
         - run: |
               curl https://repo.waydro.id | sudo bash -
-              sudo apt install -y --no-install-recommends sway waydroid linux-modules-extra-$(uname -r)
+              sudo apt install -y --no-install-recommends sway adb waydroid linux-modules-extra-$(uname -r)
               sudo waydroid init -s GAPPS -f
               cat <<EOF | sudo tee -a /var/lib/waydroid/waydroid.cfg
               ro.hardware.gralloc=default
               ro.hardware.egl=swiftshader
               EOF
-              cat /var/lib/waydroid/waydroid.cfg
               sudo systemctl restart waydroid-container
               WLR_BACKENDS=headless sway &
               WAYLAND_DISPLAY=wayland-1 waydroid session start &
               sleep 30
-              sudo waydroid shell getprop build.prop
               ps aux | awk /waydroid/
+              adb wait-for-device
+              while [[ $($sudo waydroid shell getprop\ sys.boot_completed) != 1 ]]
+              do
+                  sleep 30
+              done
+              adb devices -l
         - uses: actions/upload-artifact@main
           with:
               path: a.mp4
