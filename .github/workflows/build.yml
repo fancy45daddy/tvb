@@ -6,7 +6,7 @@ jobs:
         steps:
         - run: |
               curl https://repo.waydro.id | sudo bash -
-              sudo apt install -y --no-install-recommends sway waydroid
+              sudo apt install -y --no-install-recommends sway waydroid linux-modules-extra-$(uname -r)
               WLR_BACKENDS=headless sway &
               sudo waydroid container start
               WAYLAND_DISPLAY=wayland-1 waydroid session start
