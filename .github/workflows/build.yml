@@ -17,6 +17,7 @@ jobs:
               WAYLAND_DISPLAY=wayland-1 waydroid session start &
               sleep 30
               ps aux | awk /waydroid/
+              ip a
               adb wait-for-device
               while [[ $($sudo waydroid shell getprop\ sys.boot_completed) != 1 ]]
               do
