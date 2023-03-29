@@ -20,12 +20,12 @@ jobs:
               ps aux | awk /waydroid/
               ip a
               sudo waydroid shell 'ls -al'
-              adb wait-for-device
-              while [[ $($sudo waydroid shell getprop\ sys.boot_completed) != 1 ]]
-              do
-                  sleep 30
-              done
-              adb devices -l
+              #adb wait-for-device
+              #while [[ $($sudo waydroid shell getprop\ sys.boot_completed) != 1 ]]
+              #do
+              #    sleep 30
+              #done
+              #adb devices -l
         - uses: actions/upload-artifact@main
           with:
               path: a.mp4
