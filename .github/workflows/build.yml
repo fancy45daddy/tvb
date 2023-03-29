@@ -5,10 +5,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - run: |
-              lspci
               sudo apt update
-              sudo apt install -y --no-install-recommends sway xwayland
-              WLR_DRM_DEVICES=/dev/dri/card0 WLR_RENDERER=pixman WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 sway &
+              sudo apt install -y --no-install-recommends sway
+              WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 sway --unsupported-gpu &
               WAYLAND_DISPLAY=wayland-1 google-chrome
         - uses: actions/upload-artifact@main
           with:
