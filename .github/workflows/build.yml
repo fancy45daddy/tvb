@@ -7,10 +7,8 @@ jobs:
         - run: |
               sudo apt update
               sudo apt install -y --no-install-recommends sway
-              man sway
-              sway --help
-              WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 sway --unsupported-gpu &
-              ps aux
+              WLR_BACKENDS=headless sway &
+              curl https://repo.waydro.id | bash
               WAYLAND_DISPLAY=wayland-1 google-chrome
         - uses: actions/upload-artifact@main
           with:
