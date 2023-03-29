@@ -14,7 +14,7 @@ jobs:
               EOF
               sudo systemctl restart waydroid-container
               WLR_BACKENDS=headless sway &
-              WAYLAND_DISPLAY=wayland-0 waydroid session start &
+              WAYLAND_DISPLAY=wayland-1 waydroid session start &
               sleep 30
               ps aux | awk /waydroid/
               ip a
