@@ -8,7 +8,7 @@ jobs:
               curl https://repo.waydro.id | sudo bash -
               sudo apt install -y --no-install-recommends sway waydroid linux-modules-extra-$(uname -r)
               WLR_BACKENDS=headless sway &
-              #sudo waydroid init -s GAPPS -f
+              sudo waydroid init -s GAPPS -f
               ps aux
         - uses: actions/upload-artifact@main
           with:
