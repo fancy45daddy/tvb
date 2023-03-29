@@ -7,6 +7,7 @@ jobs:
         - run: |
               curl https://repo.waydro.id | sudo bash -
               sudo apt install -y --no-install-recommends sway waydroid linux-modules-extra-$(uname -r)
+              cat /var/lib/waydroid/waydroid.cfg
               cat <<EOF | sudo tee -a /var/lib/waydroid/waydroid.cfg
               ro.hardware.gralloc=default
               ro.hardware.egl=swiftshader
