@@ -10,6 +10,7 @@ jobs:
               WLR_BACKENDS=headless sway &
               sudo waydroid init -s GAPPS -f
               sudo systemctl restart waydroid-container
+              WAYLAND_DISPLAY=wayland-1 waydroid session start &
               ps aux | awk /waydroid/
         - uses: actions/upload-artifact@main
           with:
