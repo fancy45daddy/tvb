@@ -9,10 +9,6 @@ jobs:
               sudo apt install -y --no-install-recommends sway waydroid linux-modules-extra-$(uname -r)
               sudo waydroid init -s GAPPS -f
               cat /var/lib/waydroid/waydroid.cfg
-              cat <<EOF | sudo tee -a /var/lib/waydroid/waydroid.cfg
-              ro.hardware.gralloc=default
-              ro.hardware.egl=swiftshader
-              EOF
               sudo systemctl restart waydroid-container
               WLR_BACKENDS=headless sway &
               WAYLAND_DISPLAY=wayland-1 waydroid session start &
