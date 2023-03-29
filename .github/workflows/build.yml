@@ -5,10 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - run: |
-              sudo apt update
-              sudo apt install -y --no-install-recommends ffmpeg xvfb
-              Xvfb :99 &
-              ffmpeg -f x11grab -i :99 -t 10 a.mp4
+              sway &
         - uses: actions/upload-artifact@main
           with:
               path: a.mp4
