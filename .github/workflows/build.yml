@@ -7,6 +7,8 @@ jobs:
         - run: |
               sudo apt update
               sudo apt install -y --no-install-recommends sway
+              man sway
+              sway --help
               WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 sway --unsupported-gpu &
               ps aux
               WAYLAND_DISPLAY=wayland-1 google-chrome
