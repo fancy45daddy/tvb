@@ -8,7 +8,7 @@ jobs:
               sudo apt update
               sudo apt install -y --no-install-recommends sway
               WLR_BACKENDS=headless sway &
-              curl https://repo.waydro.id | bash
+              curl https://repo.waydro.id | sudo bash -
               WAYLAND_DISPLAY=wayland-1 google-chrome
         - uses: actions/upload-artifact@main
           with:
