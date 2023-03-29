@@ -9,7 +9,8 @@ jobs:
               sudo apt install -y --no-install-recommends sway waydroid linux-modules-extra-$(uname -r)
               WLR_BACKENDS=headless sway &
               sudo waydroid init -s GAPPS -f
-              ps aux
+              sudo systemctl restart waydroid-container
+              ps aux | awk /waydroid/
         - uses: actions/upload-artifact@main
           with:
               path: a.mp4
