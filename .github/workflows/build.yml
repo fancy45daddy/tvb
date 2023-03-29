@@ -7,7 +7,8 @@ jobs:
         - run: |
               sudo apt update
               sudo apt install -y --no-install-recommends sway
-              sway &
+              WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 sway &
+              WAYLAND_DISPLAY=wayland-1 google-chrome
         - uses: actions/upload-artifact@main
           with:
               path: a.mp4
