@@ -16,6 +16,7 @@ jobs:
               WLR_BACKENDS=headless sway &
               WAYLAND_DISPLAY=wayland-1 waydroid session start &
               sleep 30
+              waydroid shell getprop build.prop
               ps aux | awk /waydroid/
         - uses: actions/upload-artifact@main
           with:
