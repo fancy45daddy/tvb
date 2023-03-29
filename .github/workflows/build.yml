@@ -9,7 +9,7 @@ jobs:
               sudo apt install -y --no-install-recommends sway waydroid
               WLR_BACKENDS=headless sway &
               sudo waydroid container start
-              WAYLAND_DISPLAY=wayland-1 google-chrome
+              WAYLAND_DISPLAY=wayland-1 waydroid session start
         - uses: actions/upload-artifact@main
           with:
               path: a.mp4
