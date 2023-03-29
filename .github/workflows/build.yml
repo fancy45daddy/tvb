@@ -11,6 +11,7 @@ jobs:
               sudo waydroid init -s GAPPS -f
               sudo systemctl restart waydroid-container
               WAYLAND_DISPLAY=wayland-1 waydroid session start &
+              sleep 30
               ps aux | awk /waydroid/
         - uses: actions/upload-artifact@main
           with:
