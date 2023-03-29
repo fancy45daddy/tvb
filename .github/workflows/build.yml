@@ -5,6 +5,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - run: |
+              sudo apt update
+              sudo apt install -y --no-install-recommends sway
               sway &
         - uses: actions/upload-artifact@main
           with:
