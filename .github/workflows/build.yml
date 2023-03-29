@@ -8,7 +8,7 @@ jobs:
               curl https://repo.waydro.id | sudo bash -
               sudo apt install -y --no-install-recommends sway waydroid linux-modules-extra-$(uname -r)
               WLR_BACKENDS=headless sway &
-              waydroid init
+              sudo waydroid init
               sudo waydroid container start
               WAYLAND_DISPLAY=wayland-1 waydroid session start
         - uses: actions/upload-artifact@main
