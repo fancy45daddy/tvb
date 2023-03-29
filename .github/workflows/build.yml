@@ -6,18 +6,20 @@ jobs:
         steps:
         - run: |
               curl https://repo.waydro.id | sudo bash -
-              sudo apt install -y --no-install-recommends sway adb waydroid linux-modules-extra-$(uname -r)
+              sudo apt install -y --no-install-recommends adb waydroid linux-modules-extra-$(uname -r)
               sudo waydroid init -s GAPPS -f
               cat <<EOF | sudo tee -a /var/lib/waydroid/waydroid.cfg
               ro.hardware.gralloc=default
               ro.hardware.egl=swiftshader
               EOF
               sudo systemctl restart waydroid-container
-              WLR_BACKENDS=headless sway &
-              WAYLAND_DISPLAY=wayland-1 waydroid session start &
+              #WLR_BACKENDS=headless sway &
+              #WAYLAND_DISPLAY=wayland-1
+              waydroid session start &
               sleep 30
               ps aux | awk /waydroid/
               ip a
+              sudo waydroid shell 'ls -al'
               adb wait-for-device
               while [[ $($sudo waydroid shell getprop\ sys.boot_completed) != 1 ]]
               do
