@@ -7,7 +7,7 @@ jobs:
         - run: |
               sudo apt update
               sudo apt install -y --no-install-recommends sway
-              WLR_RENDERER=pixman WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 sway &
+              WLR_RENDERER=gles2 WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 sway &
               WAYLAND_DISPLAY=wayland-1 google-chrome
         - uses: actions/upload-artifact@main
           with:
