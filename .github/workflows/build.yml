@@ -8,7 +8,7 @@ jobs:
               curl https://deb.nodesource.com/setup_current.x | sudo bash -
               sudo apt install -y --no-install-recommends xvfb ffmpeg nodejs
               Xvfb :99 &
-              ffmpeg -f x11grab -s 1280x1024 -i :99 test.webm &
+              ffmpeg -f x11grab -i :99 test.webm &
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install playwright-chromium
               DISPLAY=:99 node --input-type=module <<EOF
               import {chromium} from 'playwright-chromium'
