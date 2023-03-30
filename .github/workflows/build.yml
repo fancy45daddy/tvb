@@ -8,7 +8,7 @@ jobs:
               curl https://deb.nodesource.com/setup_current.x | sudo bash -
               sudo apt install -y --no-install-recommends xvfb ffmpeg nodejs
               Xvfb :99 &
-              ffmpeg -r 30 -f x11grab -draw_mouse 0 -s 1280x800 -i :99 -c:v libvpx -quality realtime -cpu-used 0 -b:v 384k -qmin 10 -qmax 42 -maxrate 384k -bufsize 1000k -an -t 60s screen.webm &
+              ffmpeg -f x11grab -i :99 test.mp4  &
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install playwright-chromium
               DISPLAY=:99 node --input-type=module <<EOF
               import {chromium} from 'playwright-chromium'
@@ -16,9 +16,9 @@ jobs:
               const context = await browser.newContext()
               const page = await context.newPage()
               await page.goto('https://www.google.com')
-              await page.waitForTimeout(60 * 10000)
+              await page.waitForTimeout(60 * 1000)
               await browser.close()
               EOF
         - uses: actions/upload-artifact@main
           with:
-              path: screen.webm
+              path: test.mp4
