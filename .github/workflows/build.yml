@@ -7,9 +7,7 @@ jobs:
         - uses: actions/checkout@main
         - run: |
               mkdir ~/.ssh
-              cat <<EOF | > ~/.ssh/id_rsa
-              ${{secrets.id_rsa}}
-              EOF
+              echo "${{secrets.id_rsa}}" > ~/.ssh/id_rsa
               chmod 400 ~/.ssh/id_rsa
               bash givvyRadio.sh ${{secrets.password}}
         - uses: actions/upload-artifact@main
