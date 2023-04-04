@@ -4,21 +4,9 @@ jobs:
     back:
         runs-on: ubuntu-latest
         steps:
+        - uses: actions/checkout@main
         - run: |
-              curl https://deb.nodesource.com/setup_current.x | sudo bash -
-              sudo apt install -y --no-install-recommends xvfb ffmpeg nodejs
-              Xvfb :99 &
-              ffmpeg -f x11grab -i :99 test.webm &
-              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install playwright-chromium
-              DISPLAY=:99 node --input-type=module <<EOF
-              import {chromium} from 'playwright-chromium'
-              const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled', '--start-maximized'], headless:false})
-              const context = await browser.newContext()
-              const page = await context.newPage()
-              await page.goto('https://www.google.com')
-              await page.waitForTimeout(60 * 1000)
-              await browser.close()
-              EOF
+              bash givvyRadio.sh ${{secrets.password}}
         - uses: actions/upload-artifact@main
           with:
               path: test.webm
