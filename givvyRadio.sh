@@ -72,7 +72,7 @@ settings put global http_proxy 192.168.250.1:8118
 am force-stop com.termux
 EOF
 #pm clear us.current.android
-ffmpeg -f x11grab -i :99 modeEarn.webm &
+ffmpeg -f x11grab -i :99 givvyRadios.webm &
 $shell /data/data/com.termux/files/usr/bin/bash <<EOF
 am start -n com.givvyradios/com.givvyradios.shared.view.DefaultActivity
 tap()
