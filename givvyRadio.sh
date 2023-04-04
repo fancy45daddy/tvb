@@ -52,12 +52,12 @@ const page = await context.newPage()
 const client = await context.newCDPSession(page)
 await client.send('Emulation.setScriptExecutionDisabled', {value:true})
 await page.goto('https://m.apkpure.com/make-money-earn-cash-crypto/us.current.android/download')
-const [download] = await globalThis.Promise.all([page.waitForEvent('download'), page.locator('a[href="https://d.apkpure.com/b/APK/us.current.android?version=latest"]').nth(1).click()])
-await download.saveAs('modeEarn.apk')
+const [download] = await globalThis.Promise.all([page.waitForEvent('download'), page.locator('a[href="https://d.apkpure.com/b/APK/com.givvyradios?version=latest"]').nth(1).click()])
+await download.saveAs('givvyRadios.apk')
 await client.send('Emulation.setScriptExecutionDisabled', {value:false})
 await browser.close()
 EOF
-adb install modeEarn.apk
+adb install givvyRadios.apk
 sudo awk -i inplace /listen-address/{sub\(/127.0.0.1/\,\"0.0.0.0\"\)}1 /etc/privoxy/config
 echo 'forward-socks5t   /  0.0.0.0:1080 .' | sudo tee -a /etc/privoxy/config
 sudo systemctl restart privoxy
@@ -74,41 +74,22 @@ EOF
 #pm clear us.current.android
 ffmpeg -f x11grab -i :99 modeEarn.webm &
 $shell /data/data/com.termux/files/usr/bin/bash <<EOF
-pm grant us.current.android android.permission.SYSTEM_ALERT_WINDOW
-am start -n us.current.android/com.current.android.feature.authentication.signIn.SignInActivity
+am start -n com.givvyradios/com.givvyradios.shared.view.DefaultActivity
 tap()
 {
-    sleep 20
+    sleep 30
     sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
     local array=(\$(/data/data/com.termux/files/usr/bin/gawk -vRS=\> -F\" /\$1/{gsub\(/[][\,]/\,\"\ \"\,\$\(NF-1\)\)\;print\$\(NF-1\)} /data/local/tmp/ui.xml))
     echo \${array[@]}
     input tap \$((\$((\${array[0]} + \${array[2]})) / 2)) \$((\$((\${array[1]} + \${array[3]})) / 2))
 }
-tap resource-id=\"us.current.android:id\\\/mailSignInButton\"
-tap resource-id=\"us.current.android:id\\\/etEmail\"
+tap resource-id=\"com.givvyradios:id\\\/firstLanguageTextView\"
+tap resource-id=\"com.givvyradios:id\\\/forwardButton\"
+tap resource-id=\"com.givvyradios:id\\\/btAgree\"
+tap resource-id=\"com.givvyradios:id\\\/checkBox\"
+tap resource-id=\"com.givvyradios:id\\\/googleLogin\"
+uiautomator dump /data/local/tmp/ui.xml
+tap resource-id=\"identifierId\"
+cat /data/local/tmp/ui.xml
 input text chaowen.guo1@gmail.com
-tap resource-id=\"us.current.android:id\\\/passwordField\"
-input text $1
-tap resource-id=\"us.current.android:id\\\/btnLogin\"
-sleep 30
-newsActivity='am start -n us.current.android/com.current.android.feature.news.ui.activities.NewsActivity'
-\$newsActivity
-tap resource-id=\"us.current.android:id\\\/controllers\"
-sleep 30
-\$newsActivity
-array=(\$(tap resource-id=\"us.current.android:id\\\/sponsoredArticleCardView | /data/data/com.termux/files/usr/bin/gawk END{print}))
-echo \${array[@]}
-for out in {0..90}
-do
-    for i in \$(seq 2 \$((\${#array[@]} / 4)))
-    do
-        sleep 30
-        input keyevent 4
-        sleep 5
-	    input tap \$((\$((\${array[0]} + \${array[2]})) / 2)) \$((\$((\${array[\$((\$((4 * \$i)) - 3))]} + \${array[\$((\$((4 * \$i)) - 1))]})) / 2))
-    done
-    \$newsActivity
-    sleep 5
-    input tap \$((\$((\${array[0]} + \${array[2]})) / 2)) \$((\$((\${array[1]} + \${array[3]})) / 2))
-done
 EOF
