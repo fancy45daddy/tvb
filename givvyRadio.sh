@@ -85,7 +85,6 @@ tap()
 }
 tap resource-id=\"com.givvyradios:id\\\/firstLanguageTextView\"
 tap resource-id=\"com.givvyradios:id\\\/forwardButton\"
-tap resource-id=\"com.givvyradios:id\\\/btAgree\"
 tap resource-id=\"com.givvyradios:id\\\/checkBox\"
 tap resource-id=\"com.givvyradios:id\\\/googleLogin\"
 uiautomator dump /data/local/tmp/ui.xml
