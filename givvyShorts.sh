@@ -99,8 +99,9 @@ tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
 array=(\$(wm size | /data/data/com.termux/files/usr/bin/gawk {sub\(/x/\,\"\ \"\,\\\$NF\)\;print\\\$NF}))
 for i in {0..15}
 do
-    input swipe \$((\${array[1]} / 2)) \$((\${array[0]} - 10)) \$((\${array[1]} / 2)) 0
-    sleep 2
+    input swipe \$((\${array[1]} / 2)) \$((\${array[0]} - 10)) \$((\${array[1]} / 2)) 0 1000
 done
 sleep 1m
+sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
+cat /data/local/tmp/ui.xml
 EOF
