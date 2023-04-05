@@ -97,10 +97,10 @@ tap text=\"ACCEPT\"
 tap text=\"English\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
 array=(\$(wm size | /data/data/com.termux/files/usr/bin/gawk {sub\(/x/\,\"\ \"\,\\\$NF\)\;print\\\$NF}))
-for i in {0..5}
+for i in {0..10}
 do
     input swipe \$((\${array[1]} / 2)) \$((\${array[0]} - 10)) \$((\${array[1]} / 2)) 0
-    sleep 10
+    sleep 5
 done
 sleep 1m
 EOF
