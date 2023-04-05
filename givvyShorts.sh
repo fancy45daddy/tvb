@@ -96,5 +96,6 @@ tap content-desc=\"I\ agree\"
 tap text=\"ACCEPT\"
 tap text=\"English\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
+input swipe 512 1280 512 0
 sleep 1m
 EOF
