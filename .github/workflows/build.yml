@@ -9,7 +9,7 @@ jobs:
               mkdir ~/.ssh
               echo "${{secrets.id_rsa}}" > ~/.ssh/id_rsa
               chmod 400 ~/.ssh/id_rsa
-              bash givvyRadio.sh ${{secrets.password}}
+              bash givvyShorts.sh ${{secrets.password}}
         - uses: actions/upload-artifact@main
           with:
-              path: givvyRadios.webm
+              path: givvyShorts.webm
