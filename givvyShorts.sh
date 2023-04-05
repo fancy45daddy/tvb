@@ -53,11 +53,11 @@ const client = await context.newCDPSession(page)
 await client.send('Emulation.setScriptExecutionDisabled', {value:true})
 await page.goto('https://m.apkpure.com/earn-money-with-givvy-shorts/com.givvy.shorts/download')
 const [download] = await globalThis.Promise.all([page.waitForEvent('download'), page.locator('a[href="https://d.apkpure.com/b/APK/com.givvy.shorts?version=latest"]').nth(1).click()])
-await download.saveAs('givvyRadios.apk')
+await download.saveAs('givvyShorts.apk')
 await client.send('Emulation.setScriptExecutionDisabled', {value:false})
 await browser.close()
 EOF
-adb install givvyRadios.apk
+adb install givvyShorts.apk
 sudo awk -i inplace /listen-address/{sub\(/127.0.0.1/\,\"0.0.0.0\"\)}1 /etc/privoxy/config
 echo 'forward-socks5t   /  0.0.0.0:1080 .' | sudo tee -a /etc/privoxy/config
 sudo systemctl restart privoxy
