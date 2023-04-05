@@ -95,5 +95,6 @@ tap resource-id=\"passwordNext\"
 tap content-desc=\"I\ agree\"
 tap text=\"ACCEPT\"
 tap text=\"English\"
+tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
 sleep 1m
 EOF
