@@ -94,5 +94,5 @@ input text $1
 tap resource-id=\"passwordNext\"
 tap content-desc=\"I\ agree\"
 tap text=\"ACCEPT\"
-
+sleep 1m
 EOF
