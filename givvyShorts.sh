@@ -84,13 +84,14 @@ tap()
     input tap \$((\$((\${array[0]} + \${array[2]})) / 2)) \$((\$((\${array[1]} + \${array[3]})) / 2))
 }
 tap resource-id=\"com.givvy.shorts:id\\\/googleLogin\"
-#sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
-#tap resource-id=\"identifierId\"
-#input text chaowen.guo1@gmail.com
-#tap resource-id=\"identifierNext\"
-#tap text=\"Enter\ your\ password\"
-#input text $1
-#tap resource-id=\"passwordNext\"
-#tap content-desc=\"I\ agree\"
-#tap text=\"ACCEPT\"
+sleep 30
+sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
+tap resource-id=\"identifierId\"
+input text chaowen.guo1@gmail.com
+tap resource-id=\"identifierNext\"
+tap text=\"Enter\ your\ password\"
+input text $1
+tap resource-id=\"passwordNext\"
+tap content-desc=\"I\ agree\"
+tap text=\"ACCEPT\"
 EOF
