@@ -96,7 +96,7 @@ tap content-desc=\"I\ agree\"
 tap text=\"ACCEPT\"
 tap text=\"English\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
-array=(\$(wm size | /data/data/com.termux/files/usr/bin/gawk {sub\(/x/\,\"\ \"\,\$NF\)\;print\$NF}))
+array=(\$(wm size | /data/data/com.termux/files/usr/bin/gawk {sub\(/x/\,\"\ \"\,\\\$NF\)\;print\\\$NF}))
 for i in {0..5}
 do
     input swipe \$((\${array[1]} / 2)) \$((\${array[0]} - 10)) \$((\${array[1]} / 2)) 0
