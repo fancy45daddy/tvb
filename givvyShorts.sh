@@ -40,8 +40,7 @@ do
     sleep 30
 done
 adb devices -l
-curl -O https://f-droid.org/repo/com.termux_118.apkchaowenguo@chaowenguo-Alienware-17-R4:~$ echo 'Physical size: 320x640' | awk {sub\(/x/\,\"\ \"\,\$NF\)\;print\$NF}
-
+curl -O https://f-droid.org/repo/com.termux_118.apk
 adb install com.termux_118.apk
 rm -rf com.termux_118.apk
 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install playwright-chromium
