@@ -40,7 +40,8 @@ do
     sleep 30
 done
 adb devices -l
-curl -O https://f-droid.org/repo/com.termux_118.apk
+curl -O https://f-droid.org/repo/com.termux_118.apkchaowenguo@chaowenguo-Alienware-17-R4:~$ echo 'Physical size: 320x640' | awk {sub\(/x/\,\"\ \"\,\$NF\)\;print\$NF}
+
 adb install com.termux_118.apk
 rm -rf com.termux_118.apk
 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install playwright-chromium
@@ -96,6 +97,10 @@ tap content-desc=\"I\ agree\"
 tap text=\"ACCEPT\"
 tap text=\"English\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
-input swipe 512 1280 512 0
+array=(\$(wm size | /data/data/com.termux/files/usr/bin/gawk {sub\(/x/\,\"\ \"\,\$NF\)\;print\$NF}))
+for i in {0..5}
+do
+    input swipe \$((\${array[1]} / 2)) \${array[0]} \$((\${array[1]} / 2)) 0
+done
 sleep 1m
 EOF
