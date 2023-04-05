@@ -74,7 +74,7 @@ EOF
 #pm clear us.current.android
 ffmpeg -f x11grab -i :99 givvyShorts.webm &
 $shell /data/data/com.termux/files/usr/bin/bash <<EOF
-am start -n com.givvyradios/com.givvyradios.shared.view.DefaultActivity
+am start -n com.givvy.shorts/com.givvy.shorts.shared.view.DefaultActivity
 tap()
 {
     sleep 30
