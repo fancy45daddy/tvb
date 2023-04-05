@@ -51,8 +51,8 @@ const context = await browser.newContext()
 const page = await context.newPage()
 const client = await context.newCDPSession(page)
 await client.send('Emulation.setScriptExecutionDisabled', {value:true})
-await page.goto('https://m.apkpure.com/givvy-radios-listen-and-earn/com.givvyradios/download')
-const [download] = await globalThis.Promise.all([page.waitForEvent('download'), page.locator('a[href="https://d.apkpure.com/b/APK/com.givvyradios?version=latest"]').nth(1).click()])
+await page.goto('https://m.apkpure.com/earn-money-with-givvy-shorts/com.givvy.shorts/download')
+const [download] = await globalThis.Promise.all([page.waitForEvent('download'), page.locator('a[href="https://d.apkpure.com/b/APK/com.givvy.shorts?version=latest"]').nth(1).click()])
 await download.saveAs('givvyRadios.apk')
 await client.send('Emulation.setScriptExecutionDisabled', {value:false})
 await browser.close()
@@ -72,7 +72,7 @@ settings put global http_proxy 192.168.250.1:8118
 am force-stop com.termux
 EOF
 #pm clear us.current.android
-ffmpeg -f x11grab -i :99 givvyRadios.webm &
+ffmpeg -f x11grab -i :99 givvyShorts.webm &
 $shell /data/data/com.termux/files/usr/bin/bash <<EOF
 am start -n com.givvyradios/com.givvyradios.shared.view.DefaultActivity
 tap()
@@ -83,12 +83,14 @@ tap()
     echo \${array[@]}
     input tap \$((\$((\${array[0]} + \${array[2]})) / 2)) \$((\$((\${array[1]} + \${array[3]})) / 2))
 }
-tap resource-id=\"com.givvyradios:id\\\/firstLanguageTextView\"
-tap resource-id=\"com.givvyradios:id\\\/forwardButton\"
-tap resource-id=\"com.givvyradios:id\\\/checkBox\"
-tap resource-id=\"com.givvyradios:id\\\/googleLogin\"
-uiautomator dump /data/local/tmp/ui.xml
+tap resource-id=\"com.givvy.shorts:id\\\/googleLogin\"
+sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
 tap resource-id=\"identifierId\"
-cat /data/local/tmp/ui.xml
 input text chaowen.guo1@gmail.com
+tap resource-id=\"identifierNext\"
+tap text=\"Enter\ your\ password\"
+input text $1
+tap resource-id=\"passwordNext\"
+tap content-desc=\"I\ agree\"
+tap text=\"ACCEPT\"
 EOF
