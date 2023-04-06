@@ -104,6 +104,10 @@ done
 tap text=\"United\ States\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
 array=(\$(tap resource-id=\"com.givvy.shorts:id\\\/interestTextView\"))
-echo ${array[@]}
+for i in {1..4}
+do
+    input tap \$((\$((\${array[\$((4 * \$i))]} + \${array[\$((\$((4 * \$i)) + 2))]})) / 2)) \$((\$((\${array[\$((\$((4 * \$i)) + 1))]} + \${array[\$((\$((4 * \$i)) + 3))]})) / 2))
+done
+tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
 sleep 1m
 EOF
