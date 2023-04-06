@@ -102,5 +102,6 @@ do
     input swipe \$((\${array[1]} / 2)) \$((\${array[0]} - 10)) \$((\${array[1]} / 2)) 0 2000
 done
 tap text=\"United\ States\"
+tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
 sleep 1m
 EOF
