@@ -108,6 +108,9 @@ for i in {1..4}
 do
     input tap \$((\$((\${array[\$((4 * \$i))]} + \${array[\$((\$((4 * \$i)) + 2))]})) / 2)) \$((\$((\${array[\$((\$((4 * \$i)) + 1))]} + \${array[\$((\$((4 * \$i)) + 3))]})) / 2))
 done
-tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
+for i in {0..1}
+do
+    tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
+done
 sleep 1m
 EOF
