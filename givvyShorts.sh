@@ -26,7 +26,7 @@ ls $opengapps
 sudo systemctl start anbox-container-manager
 sudo mkdir /dev/binderfs
 sudo mount -t binder binder /dev/binderfs
-Xvfb :99 &
+Xvfb :99 -screen 0 1024x1280x24 &
 systemctl --user set-environment DISPLAY=:99
 sleep 30
 ls /run | awk /anbox-container/
