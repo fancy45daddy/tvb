@@ -96,10 +96,10 @@ tap content-desc=\"I\ agree\"
 tap text=\"ACCEPT\"
 tap text=\"English\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
-array=(\$(wm size | /data/data/com.termux/files/usr/bin/gawk {sub\(/x/\,\"\ \"\,\\\$NF\)\;print\\\$NF}))
+wm=(\$(wm size | /data/data/com.termux/files/usr/bin/gawk {sub\(/x/\,\"\ \"\,\\\$NF\)\;print\\\$NF}))
 for i in {0..15}
 do
-    input swipe \$((\${array[1]} / 2)) \$((\${array[0]} - 10)) \$((\${array[1]} / 2)) 0 2000
+    input swipe \$((\${wm[1]} / 2)) \$((\${wm[0]} - 10)) \$((\${wm[1]} / 2)) 0 2000
 done
 tap text=\"United\ States\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
@@ -113,5 +113,6 @@ do
     tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
 done
 tap resource-id=\"com.givvy.shorts:id\\\/startButton\"
+input swipe \$((\${wm[1]} / 2)) \$((\${wm[0]} - 10)) \$((\${wm[1]} / 2)) 0 2000
 sleep 1m
 EOF
