@@ -103,5 +103,7 @@ do
 done
 tap text=\"United\ States\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
+array=(\$(tap resource-id=\"com.givvy.shorts:id\\\/interestTextView\"))
+echo ${array[@]}
 sleep 1m
 EOF
