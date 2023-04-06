@@ -101,8 +101,6 @@ for i in {0..15}
 do
     input swipe \$((\${array[1]} / 2)) \$((\${array[0]} - 10)) \$((\${array[1]} / 2)) 0 2000
 done
-sleep 1m
-sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
-cat /data/local/tmp/ui.xml
+tap text=\"United\ States\"
 sleep 1m
 EOF
