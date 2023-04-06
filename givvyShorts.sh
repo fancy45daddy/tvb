@@ -107,6 +107,8 @@ array=(\$(tap resource-id=\"com.givvy.shorts:id\\\/interestTextView\"))
 echo \${array[@]}
 for i in {1..4}
 do
+    echo \$((\$((\${array[\$((4 * \$i))]} + \${array[\$((\$((4 * \$i)) + 2))]})) / 2))
+    echo \$((\$((\${array[\$((\$((4 * \$i)) + 1))]} + \${array[\$((\$((4 * \$i)) + 3))]})) / 2))
     input tap \$((\$((\${array[\$((4 * \$i))]} + \${array[\$((\$((4 * \$i)) + 2))]})) / 2)) \$((\$((\${array[\$((\$((4 * \$i)) + 1))]} + \${array[\$((\$((4 * \$i)) + 3))]})) / 2))
 done
 for i in {0..1}
