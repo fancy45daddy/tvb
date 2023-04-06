@@ -5,7 +5,7 @@ sudo apt purge -y mawk
 rm -rf google-chrome-stable_current_amd64.deb
 sudo curl --output-dir /var/lib/anbox -o android.img https://bitbucket.org/chaowenguo/android/raw/main/amd64.img
 sudo awk -i inplace /container-manager/{sub\(/$/\,\"\ --use-rootfs-overlay\"\)}1 /usr/lib/systemd/system/anbox-container-manager.service
-sudo awk -i inplace /session-manager/{sub\(/$/\,\"\ --single-window\ --window-size=1280\,1024\"\)}1 /usr/lib/systemd/user/anbox-session-manager.service
+sudo awk -i inplace /session-manager/{sub\(/$/\,\"\ --single-window\ --window-size=1024\,1280\"\)}1 /usr/lib/systemd/user/anbox-session-manager.service
 OPENGAPPS_RELEASEDATE=$(curl https://api.github.com/repos/opengapps/x86_64/releases/latest | awk -F\" /tag_name/{print\$\(NF-1\)})
 OPENGAPPS_FILE=open_gapps-x86_64-7.1-pico-$OPENGAPPS_RELEASEDATE.zip
 curl -L -O https://sourceforge.net/projects/opengapps/files/x86_64/$OPENGAPPS_RELEASEDATE/$OPENGAPPS_FILE
@@ -103,7 +103,7 @@ do
 done
 tap text=\"United\ States\"
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
-array=(\$(tap resource-id=\"com.givvy.shorts:id\\\/interestTextView\"))
+array=(\$(tap resource-id=\"com.givvy.shorts:id\\\/interestTextView\" | /data/data/com.termux/files/usr/bin/gawk END{print}))
 echo \${array[@]}
 for i in {1..4}
 do
