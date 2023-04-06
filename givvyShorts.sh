@@ -112,5 +112,6 @@ for i in {0..1}
 do
     tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
 done
+tap resource-id=\"com.givvy.shorts:id\\\/startButton\"
 sleep 1m
 EOF
