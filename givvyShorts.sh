@@ -110,6 +110,7 @@ do
     input tap \$((\$((\${array[\$((4 * \$i))]} + \${array[\$((\$((4 * \$i)) + 2))]})) / 2)) \$((\$((\${array[\$((\$((4 * \$i)) + 1))]} + \${array[\$((\$((4 * \$i)) + 3))]})) / 2))
 done
 tap resource-id=\"com.givvy.shorts:id\\\/nextButton\"
+sleep 1m
 tap resource-id=\"com.givvy.shorts:id\\\/secondTab\"
 tap resource-id=\"com.givvy.shorts:id\\\/startButton\"
 input swipe \$((\${wm[1]} / 2)) \$((\${wm[0]} - 10)) \$((\${wm[1]} / 2)) 0 2000
