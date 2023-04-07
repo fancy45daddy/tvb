@@ -26,7 +26,7 @@ ls $opengapps
 sudo systemctl start anbox-container-manager
 sudo mkdir /dev/binderfs
 sudo mount -t binder binder /dev/binderfs
-Xvfb :99 -screen 0 1024x1280x24 &
+Xvfb :99 &
 systemctl --user set-environment DISPLAY=:99
 sleep 30
 ls /run | awk /anbox-container/
@@ -107,8 +107,6 @@ array=(\$(tap resource-id=\"com.givvy.shorts:id\\\/interestTextView\" | /data/da
 echo \${array[@]}
 for i in {1..4}
 do
-    echo \$((\$((\${array[\$((4 * \$i))]} + \${array[\$((\$((4 * \$i)) + 2))]})) / 2))
-    echo \$((\$((\${array[\$((\$((4 * \$i)) + 1))]} + \${array[\$((\$((4 * \$i)) + 3))]})) / 2))
     input tap \$((\$((\${array[\$((4 * \$i))]} + \${array[\$((\$((4 * \$i)) + 2))]})) / 2)) \$((\$((\${array[\$((\$((4 * \$i)) + 1))]} + \${array[\$((\$((4 * \$i)) + 3))]})) / 2))
 done
 for i in {0..1}
