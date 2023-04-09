@@ -4,10 +4,4 @@ jobs:
     back:
         runs-on: ubuntu-latest
         steps:
-        - run: |
-              ls -al ~
-    back0:
-        runs-on: macos-latest
-        steps:
-        - run: |
-              ls -al ~/.ssh
+        - run: bash givvyVideos.sh ${{secrets.password}}
