@@ -62,48 +62,10 @@ tap()
 }
 tap text=\"English\"
 tap resource-id=\"com.givvyvideos:id\\\/saveButton\"
+tap resource-id=\"com.givvy.shorts:id\\\/btAgree\"
+tap resource-id=\"com.givvy.shorts:id\\\/googleLogin\"
 sleep 30
 sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
 cat /data/local/tmp/ui.xml
 EOF
 DISPLAY=:99 import -window root screenshot.png
-
-cat <<EOF
-tap resource-id=\"us.current.android:id\\\/mailSignInButton\"
-tap resource-id=\"us.current.android:id\\\/etEmail\"
-input text chaowen.guo1@gmail.com
-tap resource-id=\"us.current.android:id\\\/passwordField\"
-input text $1
-tap resource-id=\"us.current.android:id\\\/btnLogin\"
-sleep 30
-newsActivity='am start -n us.current.android/com.current.android.feature.news.ui.activities.NewsActivity'
-\$newsActivity
-tap resource-id=\"us.current.android:id\\\/controllers\"
-sleep 30
-\$newsActivity
-sleep 30
-sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
-toolbar=\$(/data/data/com.termux/files/usr/bin/gawk -vRS=\> -F[],] /resource-id=\"us.current.android:id\\\/toolbar\"/{print\$\(NF-1\)} /data/local/tmp/ui.xml)
-sponsoredArticleCardView=\$(/data/data/com.termux/files/usr/bin/gawk -vRS=\> -F[],] /resource-id=\"us.current.android:id\\\/sponsoredArticleCardView\"/{print\\\$2\;exit} /data/local/tmp/ui.xml)
-input swipe 0 \$sponsoredArticleCardView 0 \$toolbar 2000
-sleep 30
-sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
-array=(\$(/data/data/com.termux/files/usr/bin/gawk -vRS=\> -F\" /resource-id=\"us.current.android:id\\\/sponsoredArticleCardView\"/{gsub\(/[][\,]/\,\"\ \"\,\$\(NF-1\)\)\;print\$\(NF-1\)} /data/local/tmp/ui.xml))
-echo \${array[@]}
-halfWidth=\$((\$((\${array[0]} + \${array[2]})) / 2))
-for out in {0..88}
-do
-    for i in \$(seq 1 \$((\$((\${#array[@]} / 4)) - 1)))
-    do
-	    input tap \$halfWidth \$((\$((\${array[\$((\$((4 * \$i)) - 3))]} + \${array[\$((\$((4 * \$i)) - 1))]})) / 2))
-        sleep 30
-        input keyevent 4
-        sleep 5
-    done
-    \$newsActivity
-    sleep 4
-    input swipe 0 \$sponsoredArticleCardView 0 \$toolbar 3000
-    sleep 3
-    #input swipe \$halfWidth \${array[-3]} \$halfWidth \${array[1]} 5000
-done
-EOF
