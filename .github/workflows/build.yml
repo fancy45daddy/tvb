@@ -6,3 +6,6 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: bash givvyVideos.sh ${{secrets.password}}
+        - uses: actions/upload-artifact@main
+          with:
+              path: screenshot.png
