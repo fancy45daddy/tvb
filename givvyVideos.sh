@@ -62,8 +62,8 @@ tap()
 }
 tap text=\"English\"
 tap resource-id=\"com.givvyvideos:id\\\/saveButton\"
-tap resource-id=\"com.givvy.shorts:id\\\/btAgree\"
-tap resource-id=\"com.givvy.shorts:id\\\/googleLogin\"
+tap resource-id=\"com.givvyvideos:id\\\/btAgree\"
+tap resource-id=\"com.givvyvideos:id\\\/googleLogin\"
 sleep 30
 sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
 cat /data/local/tmp/ui.xml
