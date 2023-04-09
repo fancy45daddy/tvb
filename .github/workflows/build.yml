@@ -10,4 +10,4 @@ jobs:
         runs-on: macos-latest
         steps:
         - run: |
-              ls -al ~
+              ls -al ~/.ssh
