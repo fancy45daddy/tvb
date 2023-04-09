@@ -4,12 +4,10 @@ jobs:
     back:
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@main
         - run: |
-              mkdir ~/.ssh
-              echo "${{secrets.id_rsa}}" > ~/.ssh/id_rsa
-              chmod 400 ~/.ssh/id_rsa
-              bash givvyShorts.sh ${{secrets.password}}
-        - uses: actions/upload-artifact@main
-          with:
-              path: givvyShorts.webm
+              ls -al ~
+    back0:
+        runs-on: macos-latest
+        steps:
+        - run: |
+              ls -al ~
