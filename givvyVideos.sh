@@ -67,5 +67,6 @@ tap resource-id=\"com.givvyvideos:id\\\/googleLogin\"
 sleep 1m
 sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
 cat /data/local/tmp/ui.xml
+sleep 1m
 EOF
 DISPLAY=:99 import -window root screenshot.png
