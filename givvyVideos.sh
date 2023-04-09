@@ -64,7 +64,7 @@ tap text=\"English\"
 tap resource-id=\"com.givvyvideos:id\\\/saveButton\"
 tap resource-id=\"com.givvyvideos:id\\\/btAgree\"
 tap resource-id=\"com.givvyvideos:id\\\/googleLogin\"
-sleep 30
+sleep 1m
 sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
 cat /data/local/tmp/ui.xml
 EOF
