@@ -54,7 +54,7 @@ $shell /data/data/com.termux/files/usr/bin/bash <<EOF
 am start -n com.givvyvideos/com.givvyvideos.shared.view.DefaultActivity 
 tap()
 {
-    sleep 20
+    sleep 30
     sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
     local array=(\$(/data/data/com.termux/files/usr/bin/gawk -vRS=\> -F\" /"\$1"/{gsub\(/[][\,]/\,\"\ \"\,\$\(NF-1\)\)\;print\$\(NF-1\)} /data/local/tmp/ui.xml))
     echo \${array[@]}
