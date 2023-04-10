@@ -64,9 +64,15 @@ tap text=\"English\"
 tap resource-id=\"com.givvyvideos:id\\\/saveButton\"
 tap resource-id=\"com.givvyvideos:id\\\/btAgree\"
 tap resource-id=\"com.givvyvideos:id\\\/googleLogin\"
-sleep 1m
-sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
-cat /data/local/tmp/ui.xml
-sleep 1m
+sleep 30
+uiautomator dump /data/local/tmp/ui.xml
+tap resource-id=\"identifierId\"
+input text chaowen.guo1@gmail.com
+tap resource-id=\"identifierNext\"
+sleep 30
+input text $1
+tap resource-id=\"passwordNext\"
+tap text=\"I\ agree\"
+tap text=\"ACCEPT\"
 EOF
 DISPLAY=:99 import -window root screenshot.png
