@@ -65,7 +65,7 @@ tap resource-id=\"com.givvyvideos:id\\\/saveButton\"
 tap resource-id=\"com.givvyvideos:id\\\/btAgree\"
 tap resource-id=\"com.givvyvideos:id\\\/googleLogin\"
 sleep 30
-sh uiautomator dump /data/local/tmp/ui.xml
+sh /system/bin/uiautomator dump /data/local/tmp/ui.xml
 tap resource-id=\"identifierId\"
 input text chaowen.guo1@gmail.com
 tap resource-id=\"identifierNext\"
