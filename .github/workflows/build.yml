@@ -6,12 +6,9 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: |
-              sudo apt update
-              sudo apt install -y --no-install-recommends python3-torch
-              python -m pip install diffusers omegaconf safetensors transformers
+              python -m pip install diffusers omegaconf safetensors transformers torch
               git clone https://huggingface.co/chaowenguo/pal
-              curl -O https://raw.githubusercontent.com/huggingface/diffusers/main/scripts/convert_original_stable_diffusion_to_diffusers.py
-              python convert_original_stable_diffusion_to_diffusers.py --from_safetensors --checkpoint_path pal/chilloutMix-Ni.safetensors --dump_path output
+              curl https://raw.githubusercontent.com/huggingface/diffusers/main/scripts/convert_original_stable_diffusion_to_diffusers.py | python --from_safetensors --checkpoint_path pal/chilloutMix-Ni.safetensors --dump_path output
               #bash givvyVideos.sh ${{secrets.password}} 
         - uses: actions/upload-artifact@main
           with:
