@@ -5,7 +5,12 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@main
-        - run: bash givvyVideos.sh ${{secrets.password}}
+        - run: |
+              python -m pip install diffusers omegaconf safetensors
+              git clone https://huggingface.co/chaowenguo/pal
+              curl -O https://raw.githubusercontent.com/huggingface/diffusers/main/scripts/convert_original_stable_diffusion_to_diffusers.py
+              python convert_original_stable_diffusion_to_diffusers.py --from_safetensors --checkpoint_path pal/chilloutMix-Ni.safetensors --dump_path output
+              #bash givvyVideos.sh ${{secrets.password}} 
         - uses: actions/upload-artifact@main
           with:
               path: screenshot.png
