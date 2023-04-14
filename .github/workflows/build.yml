@@ -6,7 +6,7 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: |
-              python -m pip install diffusers omegaconf safetensors torch 
+              python -m pip install diffusers omegaconf safetensors torch transformers
               git clone https://huggingface.co/chaowenguo/pal
               curl -O https://raw.githubusercontent.com/huggingface/diffusers/main/scripts/convert_original_stable_diffusion_to_diffusers.py
               python convert_original_stable_diffusion_to_diffusers.py --from_safetensors --checkpoint_path pal/chilloutMix-Ni.safetensors --dump_path output
