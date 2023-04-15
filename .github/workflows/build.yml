@@ -9,6 +9,4 @@ jobs:
               podman login -u chaowenguo -p ${{secrets.password}} quay.io
               podman build --format docker -f Dockerfile -t anbox .
               podman push anbox quay.io/chaowenguo/anbox
-              #bash givvyVideos.sh ${{secrets.password}} 
-        - uses: actions/upload-artifact@main
-              path: screenshot.png
+              #bash givvyVideos.sh ${{secrets.password}}
