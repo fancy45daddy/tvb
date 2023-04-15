@@ -1,5 +1,5 @@
 FROM ubuntu
 SHELL ["bash", "-c"]
 WORKDIR /usr/local/src
-RUN apt update && apt install -y --no-install-recommends linux-modules-extra-$(uname -r) xvfb anbox gawk lzip adb privoxy ffmpeg kmod && apt clean
-ENTRYPOINT modprobe binder_linux && modprobe ashmem_linux && lsmod
+RUN git clone https://github.com/anbox/anbox-modules && awk {gsub\(/sudo/\,\"\"\)}1 anbox-modules/INSTALL.sh | bash
+ENTRYPOINT lsmod
