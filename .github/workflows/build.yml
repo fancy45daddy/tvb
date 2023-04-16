@@ -6,7 +6,6 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: |
-              podman login -u chaowenguo -p ${{secrets.password}} quay.io
-              podman build --format docker -f Dockerfile -t anbox .
-              podman push anbox quay.io/chaowenguo/anbox
+              python3 -m pip install pynat
+              pynat
               #bash givvyVideos.sh ${{secrets.password}}
