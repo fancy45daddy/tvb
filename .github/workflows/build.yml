@@ -6,7 +6,8 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: |
-              python3 -m pip install --upgrade youtube-dl
+              sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+              sudo chmod a+rx /usr/local/bin/youtube-dl
               youtube-dl https://youtube.com/watch?v=2lAe1cqCOXo
               ls -al
               #bash givvyVideos.sh ${{secrets.password}}
