@@ -6,7 +6,7 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: |
-              python3 pip install --upgrade youtube-dl
+              python3 -m pip install --upgrade youtube-dl
               youtube-dl https://youtube.com/watch?v=2lAe1cqCOXo
               ls -al
               #bash givvyVideos.sh ${{secrets.password}}
