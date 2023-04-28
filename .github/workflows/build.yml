@@ -8,6 +8,6 @@ jobs:
         - run: |
               sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
               sudo chmod a+rx /usr/local/bin/youtube-dl
-              youtube-dl https://youtube.com/watch?v=2lAe1cqCOXo
+              youtube-dl https://www.youtube.com/watch?v=FiMeWFTHZtU
               ls -al
               #bash givvyVideos.sh ${{secrets.password}}
