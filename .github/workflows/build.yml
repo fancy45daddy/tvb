@@ -6,7 +6,7 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: |
-              python3 -m pip install -U yt-dlp
-              yt-dlp https://www.youtube.com/watch?v=FiMeWFTHZtU
-              ls -al
+              sudo apt install -y --no-install-recommends python3-aiohttp python3-bs4 python3-lxml
+              python3 -m pip install -U zhconv huggingface_hub
+              python3 tvb.py
               #bash givvyVideos.sh ${{secrets.password}}
