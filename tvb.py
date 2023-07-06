@@ -1,4 +1,4 @@
-import asyncio, aiohttp, tempfile, huggingface_hub, zhconv, bs4, os, itertools
+import asyncio, aiohttp, tempfile, huggingface_hub, zhconv, bs4, os, sys, itertools
 
 huggingface_hub.login('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') #https://huggingface.co/settings/tokens
 unlink = []
@@ -11,7 +11,7 @@ async def main():
                     json = await _.json()
                     async with client.get(json.get('sources')[0].get('src')) as m3u8:
                         with tempfile.NamedTemporaryFile(delete=False) as tmp:
-                            unlink += tmp.name,
+                            sys.modules[__name__].unlink += tmp.name,
                             ffmpeg = await asyncio.create_subprocess_exec('ffmpeg', '-y', '-protocol_whitelist', 'http,https,file,tls,tcp,pipe', '-i', '-', '-f', 'mp4', tmp.name, stdin=asyncio.subprocess.PIPE)
                             await ffmpeg.communicate(await m3u8.content.read())
                             api = huggingface_hub.HfApi()
