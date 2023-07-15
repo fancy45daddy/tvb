@@ -8,5 +8,5 @@ jobs:
         - run: |
               sudo apt install -y --no-install-recommends python3-aiohttp python3-bs4 python3-lxml ffmpeg
               python3 -m pip install -U zhconv huggingface_hub
-              python3 tvb.py
+              python3 tvb.py ${{secrets.huggingface}}
               #bash givvyVideos.sh ${{secrets.password}}
