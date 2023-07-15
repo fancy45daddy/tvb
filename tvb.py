@@ -1,6 +1,8 @@
-import asyncio, aiohttp, tempfile, huggingface_hub, zhconv, bs4, os, sys, itertools
+import asyncio, aiohttp, tempfile, huggingface_hub, zhconv, bs4, os, sys, argparse, itertools
+parser = argparse.ArgumentParser()
+parser.add_argument('huggingface')
 
-huggingface_hub.login('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') #https://huggingface.co/settings/tokens
+huggingface_hub.login(parser.parse_args().huggingface) #https://huggingface.co/settings/tokens
 unlink = []
 
 async def main():
