@@ -8,7 +8,7 @@ unlink = []
 async def main():
     async with aiohttp.ClientSession() as client:
         async with client.get('https://www.tvbanywherena.com/cantonese/series/1244-AGeneralAScholarAndAnEunuch') as program:
-            for episode in itertools.islice(bs4.BeautifulSoup(await program.text(), 'lxml').find('div', attrs={'class':'episodeDiv'}).find_all('a'), 2, None):
+            for episode in itertools.islice(bs4.BeautifulSoup(await program.text(), 'lxml').find('div', attrs={'class':'episodeDiv'}).find_all('a'), 12, None):
                 async with client.get(f'https://edge.api.brightcove.com/playback/v1/accounts/5324042807001/videos/{episode.get("href").split("/")[-1]}', headers={'accept':'application/json;pk=BCpkADawqM105amwEKXAkX7W_l4jcpUMMPNr331wjQzRwTMHyoZ_qxPNx8KG3SCWEylM62XxHZXjuFl2EzrVsCKAAOlBuMFX4KAu3BW3NCqhEobE5Vcxknb6TV_anuQZUp8wfI3zcyatmzYor7rx9opPSQ_71RkQmktElORv1l98AqgNbeYQlwWt6GoAMidUC3cR65WrWYBctr5lz6U_u-TGGWdO_JUIuHiMfxs2oygZNHWVUhl0R5qWlZaM32dkny102bhHDr8wzR24z1XH9yDlL93O58cBxi23o97WDluICmIr5Tn4fZ-qLrg8bRkpkhh5qCyjYcaiM5WQ332wyortFVEn7vN27r7imEMPVVbjlFSugd2XuRpPbvtezQfWmVd80BRpcvUDPLSdfDM4VhcpgGu-BXbXOSAk1vmlgMNfGGi19TJbZQiHyJY', 'origin':'https://www.tvbanywherena.com'}) as _:
                     json = await _.json()
                     async with client.get(json.get('sources')[0].get('src')) as m3u8:
