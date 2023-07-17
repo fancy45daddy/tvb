@@ -19,7 +19,8 @@ async def main():
                             api = huggingface_hub.HfApi()
                             customFields = json.get('custom_fields')
                             programName = zhconv.convert(customFields.get('program_name'), 'zh-cn')
-                            api.upload_file(path_or_fileobj=tmp.name, path_in_repo=''.join((programName, '/', customFields.get('beacon_episode_number').zfill(2), '.mp4')), repo_id='chaowenguo/video', repo_type='model', run_as_future=True)
+                            future = api.upload_file(path_or_fileobj=tmp.name, path_in_repo=''.join((programName, '/', customFields.get('beacon_episode_number').zfill(2), '.mp4')), repo_id='chaowenguo/video', repo_type='model', run_as_future=True)
+    return future
 
-asyncio.run(main())
+asyncio.run(main()).result()
 for _ in unlink: os.unlink(_)
